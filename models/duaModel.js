@@ -10,7 +10,12 @@ exports.getDuaById = (id, callback) => {
   db.get(query, [id], callback);
 };
 
-exports.getAllDua = (id, callback) => {
+exports.getAllDua = (callback) => {
   const query = `SELECT * FROM dua`;
-  db.get(query, [id], callback);
+  db.all(query, [], callback); // Use `db.all` instead of `db.get` to fetch all rows
+};
+
+exports.getDuasByCategoryId = (categoryId, callback) => {
+  const query = `SELECT * FROM dua WHERE cat_id = ?`;
+  db.all(query, [categoryId], callback);
 };
