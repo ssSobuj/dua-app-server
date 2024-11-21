@@ -8,6 +8,13 @@ exports.getDuas = (req, res) => {
   });
 };
 
+exports.getAllDua = (req, res) => {
+  duaModel.getAllDua((err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+};
+
 exports.getDua = (req, res) => {
   const { id } = req.params;
   duaModel.getDuaById(id, (err, row) => {

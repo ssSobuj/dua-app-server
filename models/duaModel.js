@@ -9,3 +9,8 @@ exports.getDuaById = (id, callback) => {
   const query = `SELECT * FROM dua WHERE id = ?`;
   db.get(query, [id], callback);
 };
+
+exports.getAllDua = (id, callback) => {
+  const query = `SELECT * FROM dua`;
+  db.get(query, [id], callback);
+};
