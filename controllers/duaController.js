@@ -40,3 +40,46 @@ exports.getDuasByCategoryId = (req, res) => {
     res.json(rows);
   });
 };
+
+exports.getDuasByCategoryAndSubcategory = (req, res) => {
+  const { cat_id, subcat_id } = req.query;
+
+  // Validate category ID
+  if (!cat_id) {
+    return res.status(400).json({ error: "cat_id is required" });
+  }
+
+  // If only cat_id is provided
+  if (!subcat_id) {
+    duaModel.getDuasByCategoryId(cat_id, (err, rows) => {
+      if (err) {
+        console.error("Database error:", err.message);
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (!rows.length) {
+        return res
+          .status(404)
+          .json({ error: "No Duas found for this category" });
+      }
+
+      res.json(rows);
+    });
+  } else {
+    // If both cat_id and subcat_id are provided
+    duaModel.getDuasByCategoryAndSubcategory(cat_id, subcat_id, (err, rows) => {
+      if (err) {
+        console.error("Database error:", err.message);
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (!rows.length) {
+        return res.status(404).json({
+          error: "No Duas found for this category and subcategory",
+        });
+      }
+
+      res.json(rows);
+    });
+  }
+};

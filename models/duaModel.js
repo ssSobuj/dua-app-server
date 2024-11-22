@@ -19,3 +19,12 @@ exports.getDuasByCategoryId = (categoryId, callback) => {
   const query = `SELECT * FROM dua WHERE cat_id = ?`;
   db.all(query, [categoryId], callback);
 };
+
+exports.getDuasByCategoryAndSubcategory = (
+  categoryId,
+  subcategoryId,
+  callback
+) => {
+  const query = `SELECT * FROM dua WHERE cat_id = ? AND subcat_id = ?`;
+  db.all(query, [categoryId, subcategoryId], callback);
+};

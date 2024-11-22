@@ -16,18 +16,13 @@ router.get(
 router.get("/subcategories", subCategoryController.getSubcategories);
 
 // Dua routes
-// Dua routes
-router.get("/duas", duaController.getAllDua); // Get all Duas
-router.get("/duas/:duaId", duaController.getDuaById); // Get a single Dua by ID
+router.get("/duas", duaController.getAllDua);
+router.get("/duas/filter", duaController.getDuasByCategoryAndSubcategory); // Filter Duas by cat_id and subcat_id
+router.get("/duas/:duaId", duaController.getDuaById);
 router.get(
   "/subcategories/:subcatId/duas",
   duaController.getDuasBySubcategoryId
-); // Get Duas by Subcategory ID
-router.get("/categories/:catId/duas", duaController.getDuasByCategoryId); // Get Duas by Category ID
+);
+router.get("/categories/:catId/duas", duaController.getDuasByCategoryId);
 
 module.exports = router;
-
-//sub-categoris = api/categories/1/subcategories
-//categoris = api/categories
-//duas = api/duas
-//duas = api/duas/1
