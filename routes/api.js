@@ -9,11 +9,7 @@ router.get("/categories", categoryController.getCategories);
 router.get("/categories/:id", categoryController.getCategory);
 
 // Subcategory routes
-router.get(
-  "/categories/:catId/subcategories",
-  subCategoryController.getSubcategoriesByCategory
-);
-router.get("/subcategories", subCategoryController.getSubcategories);
+router.get("/subcategories", subCategoryController.getSubcategoriesByCategory); // Modified to work with query parameter
 
 // Dua routes
 router.get("/duas", duaController.getAllDua);
