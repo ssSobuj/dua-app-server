@@ -1,8 +1,7 @@
 const db = require("../config/db");
 
-exports.getAllCategories = (callback) => {
-  const query = `SELECT * FROM category`;
-  db.all(query, [], callback);
+exports.getCategories = (query, params, callback) => {
+  db.all(query, params, callback); // Pass the query and params to the database
 };
 
 exports.getCategoryById = (id, callback) => {

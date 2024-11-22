@@ -5,7 +5,7 @@ const subCategoryController = require("../controllers/subCategoryController");
 const duaController = require("../controllers/duaController");
 
 // Category routes
-router.get("/categories", categoryController.getCategories);
+router.get("/categories", categoryController.getCategories); // This route now supports search
 router.get("/categories/:id", categoryController.getCategory);
 
 // Subcategory routes
